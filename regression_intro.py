@@ -6,6 +6,8 @@ from sklearn import  model_selection
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 from matplotlib import style
+import pickle
+
 style.use('ggplot')
 
 
@@ -32,10 +34,16 @@ y = np.array(df['label'])
 
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
 
-clf = LinearRegression(n_jobs=-1)
-# clf = svm.SVR(kernel='poly')
+# clf = LinearRegression(n_jobs=-1)
+# # clf = svm.SVR(kernel='poly')
 
-clf.fit(X_train, y_train)
+# clf.fit(X_train, y_train)
+# with open('linearregression.pickle','wb') as f:
+#     pickle.dump(clf, f)
+
+pickle_in = open('linearregression.pickle','rb')
+clf = pickle.load(pickle_in)
+
 confidence = clf.score(X_test, y_test)
 
 forecast_set = clf.predict(X_lately)
@@ -51,7 +59,7 @@ for i in forecast_set:
     next_unix += 86400
     df.loc[next_date] = [np.nan for _ in range(len(df.columns)-1)]+[i]
 
-df.to_html('data2.html',classes='table')
+# df.to_html('data2.html',classes='table')
 df['Adj. Close'].plot()
 df['Forecast'].plot()
 plt.legend(loc=4)
