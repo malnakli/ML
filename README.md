@@ -1,4 +1,4 @@
 # ML
 
-to run python server
-`python -m http.server 8000`
+to run python server         
+`python3 -m http.server 8000`
