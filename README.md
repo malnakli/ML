@@ -14,3 +14,8 @@
 - [Book on constraint optimization and Lagrange multipliers methods](http://www.mit.edu/~dimitrib/Constrained-Opt.pdf)
 - [Python Lib: CVXOPT](http://cvxopt.org/) 
 - [Python lib: libsvm](https://www.csie.ntu.edu.tw/~cjlin/libsvm/)
+
+## Useful code
+
+to run python server         
+`python3 -m http.server 8000`
