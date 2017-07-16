@@ -1,6 +1,11 @@
 # Machine learning
 > This my learning of machine learning
 
+## ML References   
+- [The one I follow mostly](https://pythonprogramming.net/machine-learning-tutorial-python-introduction)
+- [Nice Intro](https://www.youtube.com/watch?v=IpGxLWOIZy4)
+- [Full Course at Coursera](https://www.coursera.org/learn/machine-learning#syllabus)
+
 ## Liner regression     
 ***       
 

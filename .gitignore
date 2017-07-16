@@ -3,3 +3,5 @@ bin
 lib
 .Python
 .vscode 
+__pycache__
+.DS_Store
