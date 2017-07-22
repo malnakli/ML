@@ -1,31 +1,25 @@
 import tensorflow as tf
-from tensorflow.examples.tutorials.mnist import input_data
+import numpy as np
+from create_sentiment_featuresets import csf
 
-mnist = input_data.read_data_sets("tmp/data/", one_hot=True)
+train_x, train_y, test_x, test_y = csf.load_data()
 
-# 10 classes 0-9
-'''
-one_hot should give the followng
-0 = [1,0,0,0,0,0,0,0,0]
-1 = [0,1,0,0,0,0,0,0,0]
-2 = [0,0,1,0,0,0,0,0,0]
-3 = [0,0,0,1,0,0,0,0,0]
-'''
 
-n_nodes_hl1 = 90
-n_nodes_hl2 = 70
-n_nodes_hl3 = 70
+n_nodes_hl1 = 500
+n_nodes_hl2 = 500
+n_nodes_hl3 = 500
 
-n_classes = 10
+n_classes = 2
 batch_size = 100
 
+x_shap_sizing = len(train_x[0])
 # https://www.tensorflow.org/api_docs/python/tf/placeholder
-x = tf.placeholder(tf.float32, [None, 784])
+x = tf.placeholder(tf.float32, [None, x_shap_sizing])
 y = tf.placeholder(tf.float32)
 
 
 def neural_network_model(data):
-    hidden_1_layer = {'weights': tf.Variable(tf.random_normal([784, n_nodes_hl1])),
+    hidden_1_layer = {'weights': tf.Variable(tf.random_normal([x_shap_sizing, n_nodes_hl1])),
                       'biases': tf.Variable(tf.random_normal([n_nodes_hl1]))}
 
     hidden_2_layer = {'weights': tf.Variable(tf.random_normal([n_nodes_hl1, n_nodes_hl2])),
@@ -65,7 +59,7 @@ def train_neural_network(x):
         logits=prediction, labels=y))
     optimizer = tf.train.AdamOptimizer().minimize(cost)
 
-    hm_epochs = 25
+    hm_epochs = 10
     with tf.Session() as sess:
         # OLD:
         # sess.run(tf.initialize_all_variables())
@@ -74,10 +68,10 @@ def train_neural_network(x):
 
         for epoch in range(hm_epochs):
             epoch_loss = 0
-            for _ in range(int(mnist.train.num_examples / batch_size)):
-                epoch_x, epoch_y = mnist.train.next_batch(batch_size)
+            for _ in range(int(csf.num_examples() / batch_size)):
+                batch_x, batch_y = csf.next_batch(batch_size)
                 _, c = sess.run([optimizer, cost], feed_dict={
-                                x: epoch_x, y: epoch_y})
+                                x: batch_x, y: batch_y})
                 epoch_loss += c
 
             print('Epoch', epoch, 'completed out of',
@@ -87,7 +81,7 @@ def train_neural_network(x):
 
         accuracy = tf.reduce_mean(tf.cast(correct, 'float'))
         print('Accuracy:', accuracy.eval(
-            {x: mnist.test.images, y: mnist.test.labels}))
+            {x: test_x, y: test_y}))
 
 
 train_neural_network(x)

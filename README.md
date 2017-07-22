@@ -1,6 +1,20 @@
 # Machine learning
 > This my learning of machine learning
 
+
+## Tensorflow
+
+
+### References
+- [The one I followed](https://www.youtube.com/watch?v=oYbVFhK_olY&list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v&index=43)
+
+
+### FAQ
+- Tensorflow - What does ops constructors mean?
+https://stackoverflow.com/questions/38293688/tensorflow-what-does-ops-constructors-mean
+
+
+
 ## ML References   
 - [The one I follow mostly](https://pythonprogramming.net/machine-learning-tutorial-python-introduction)
 - [Nice Intro](https://www.youtube.com/watch?v=IpGxLWOIZy4)
