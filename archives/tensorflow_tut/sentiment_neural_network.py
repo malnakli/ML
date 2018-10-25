@@ -59,7 +59,7 @@ def train_neural_network(x):
         logits=prediction, labels=y))
     optimizer = tf.train.AdamOptimizer().minimize(cost)
 
-    hm_epochs = 10
+    hm_epochs = 15
     with tf.Session() as sess:
         # OLD:
         # sess.run(tf.initialize_all_variables())

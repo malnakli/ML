@@ -46,7 +46,7 @@ class Train_data:
         l2 = []
         for w in w_counts:
                 # print(w_counts[w])
-            if 1000 > w_counts[w] > 50:
+            if 1000 > w_counts[w] > 20 and len(w) > 3:
                 l2.append(w)
 
         print(len(l2))
@@ -119,7 +119,6 @@ class Train_data:
         batch_x = np.array(self.train_x[start: end])
         batch_y = np.array(self.train_y[start: end])
         self.current_batch += batch_size
-        print(self.current_batch)
         return batch_x,  batch_y
 
     def num_examples(self):
@@ -127,7 +126,7 @@ class Train_data:
         return len(self.train_x)
 
 
-csf = Train_data()
+csf = Train_data(pickle_data=False)
 
 if __name__ == '__main__':
     train_x, train_y, test_x, test_y = Train_data().load_data()
