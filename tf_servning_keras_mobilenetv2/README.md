@@ -1,4 +1,4 @@
-# Using Tensorflow Serving to deploy a trained Keras MobileNet V2 model 
+# Train Keras MobileNet V2 model & Deploy to Heroku by using Tensorflow Servning 
 This a complete code for my following blog []().
 
 
