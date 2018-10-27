@@ -1,10 +1,5 @@
-include
-bin
-lib
-.Python
 .vscode 
 __pycache__
 .DS_Store
-tmp
 *.pickle
 .ipynb_checkpoints
