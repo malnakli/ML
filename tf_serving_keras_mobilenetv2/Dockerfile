@@ -48,9 +48,9 @@ ENV MODEL_BASE_PATH=/models
 RUN mkdir -p ${MODEL_BASE_PATH}
 WORKDIR  ${MODEL_BASE_PATH}
 # The only required piece is the model name in order to differentiate endpoints
-ENV MODEL_NAME=tf_servning_keras_mobilenetv2
+ENV MODEL_NAME=tf_serving_keras_mobilenetv2
 
-COPY models/export/tf_servning_keras_mobilenetv2 tf_servning_keras_mobilenetv2
+COPY models/export/tf_serving_keras_mobilenetv2 tf_serving_keras_mobilenetv2
 
 # Create a script that runs the model server so we can use environment variables
 # while also passing in arguments from the docker command line
