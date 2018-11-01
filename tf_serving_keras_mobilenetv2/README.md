@@ -1,6 +1,6 @@
-# Train Keras MobileNet V2 model & Deploy it to Heroku by using Tensorflow Serving
-This a complete code for my following blog []().
+# Training and Deploying A Deep Learning Model in Keras MobileNet V2 and Heroku
 
+This repo is part of this [blog](https://medium.com/@malnakli/tf-serving-keras-mobilenetv2-632b8d92983c) 
 
 ## Installation 
 - [conda](https://conda.io/docs/installation.html)
